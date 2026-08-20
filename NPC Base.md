@@ -8,12 +8,13 @@ It provides shared NPC functionality so individual NPCs only need to define thei
 
 Supports:
 
-- Multi-file NPCs
-- Single-file NPCs
-- Custom attacks
-- Projectiles
-- Factions
-- Custom behavior
+* Multi-file NPCs
+* Single-file NPCs
+* Custom attacks
+* Projectiles
+* Factions
+* Animation handling
+* Custom behavior
 
 ---
 
@@ -23,21 +24,25 @@ Supports:
 
 Used for larger NPCs.
 
-    lua/entities/
+```
+lua/entities/
 
-    npc_x308_base/
-    ├── shared.lua
-    ├── init.lua
-    └── cl_init.lua
+npc_x308_base/
+├── shared.lua
+├── init.lua
+└── cl_init.lua
 
-    npc_example/
-    ├── shared.lua
-    ├── init.lua
-    └── cl_init.lua
+npc_example/
+├── shared.lua
+├── init.lua
+└── cl_init.lua
+```
 
 Example:
 
-    ENT.Base = "npc_x308_base"
+```
+ENT.Base = "npc_x308_base"
+```
 
 ---
 
@@ -45,19 +50,23 @@ Example:
 
 Used for simple NPCs that do not need separate files.
 
-    lua/entities/npc_example.lua
+```
+lua/entities/npc_example.lua
+```
 
 Example:
 
-    AddCSLuaFile()
+```
+AddCSLuaFile()
 
-    ENT.Type = "ai"
-    ENT.Base = "npc_x308_base"
+ENT.Type = "ai"
+ENT.Base = "npc_x308_base"
 
-    ENT.PrintName = "Example NPC"
-    ENT.Category = "x308 NPCs"
+ENT.PrintName = "Example NPC"
+ENT.Category = "x308 NPCs"
 
-    ENT.Spawnable = true
+ENT.Spawnable = true
+```
 
 ---
 
@@ -65,16 +74,18 @@ Example:
 
 npc_x308_base provides:
 
-- Health handling
-- Faction support
-- Movement variables
-- Attack variables
-- Projectile variables
-- Sound variables
-- Drop variables
-- Custom hooks
+* Health handling
+* Faction support
+* Movement variables
+* Attack variables
+* Projectile variables
+* Sound variables
+* Drop variables
+* Animation controller
+* Sequence handling
+* Custom hooks
 
-NPCs can override these features when needed.
+NPCs decide their own stats and behavior.
 
 ---
 
@@ -82,24 +93,22 @@ NPCs can override these features when needed.
 
 ## Basic
 
-    ENT.Model = nil
-    ENT.HP = 100
-    ENT.MaxHP = nil
-    ENT.Faction = nil
-
-Example:
-
-    ENT.Model = "models/example.mdl"
-    ENT.HP = 250
-    ENT.Faction = "FACTION_PLANTS"
+```
+ENT.Model = nil
+ENT.HP = 100
+ENT.MaxHP = nil
+ENT.Faction = nil
+```
 
 ---
 
 ## Movement
 
-    ENT.Speed = nil
-    ENT.WalkSpeed = nil
-    ENT.RunSpeed = nil
+```
+ENT.Speed = nil
+ENT.WalkSpeed = nil
+ENT.RunSpeed = nil
+```
 
 Used by NPCs that need custom movement.
 
@@ -107,69 +116,86 @@ Used by NPCs that need custom movement.
 
 ## Combat
 
-    ENT.CanAttack = false
+```
+ENT.CanAttack = false
 
-    ENT.AttackDamage = nil
-    ENT.AttackRange = nil
-    ENT.AttackRate = nil
-
-Example:
-
-    ENT.CanAttack = true
-    ENT.AttackDamage = 50
-    ENT.AttackRange = 600
-    ENT.AttackRate = 1.5
+ENT.AttackDamage = nil
+ENT.AttackRange = nil
+ENT.AttackRate = nil
+```
 
 ---
 
 ## Projectiles
 
-    ENT.Projectile = nil
+```
+ENT.Projectile = nil
+ENT.ProjectileDamage = nil
+ENT.ProjectileSpeed = nil
+ENT.ProjectileRadius = nil
+ENT.ProjectileLife = nil
+```
 
-    ENT.ProjectileDamage = nil
-    ENT.ProjectileSpeed = nil
-    ENT.ProjectileRadius = nil
-    ENT.ProjectileLife = nil
-
-Example:
-
-    ENT.Projectile = "obj_x308_projectile"
-    ENT.ProjectileDamage = 25
-    ENT.ProjectileSpeed = 1600
+NPCs decide projectile behavior and stats.
 
 ---
 
-## Animations
+# Animations
 
-    ENT.IdleAnimation = nil
-    ENT.AttackAnimation = nil
-    ENT.MoveAnimation = nil
+Basic NPCs can use:
 
-NPCs can override these for custom animations.
-
----
-
-## Sounds
-
-    ENT.SpawnSound = nil
-    ENT.AttackSound = nil
-    ENT.DeathSound = nil
+```
+ENT.IdleAnimation = nil
+ENT.AttackAnimation = nil
+ENT.MoveAnimation = nil
+```
 
 Example:
 
-    ENT.AttackSound = "npc/attack.wav"
+```
+ENT.IdleAnimation = "idle"
+ENT.MoveAnimation = "run"
+ENT.AttackAnimation = "attack2"
+```
+
+Advanced NPCs can use:
+
+```
+ENT.Animations = {
+    Idle = "idle",
+    Move = "run",
+    Attack = "attack2",
+    Death = "death"
+}
+```
+
+The animation controller provides:
+
+* Safe sequence checking
+* Animation state tracking
+* Attack animation locking
+* Idle return
+* Playback control
+* Missing animation protection
 
 ---
 
-## Drops
+# Sounds
 
-    ENT.DropItem = nil
-    ENT.DropChance = 0
+```
+ENT.SpawnSound = nil
+ENT.AttackSound = nil
+ENT.DeathSound = nil
+```
 
-Example:
+---
 
-    ENT.DropItem = "item_healthkit"
-    ENT.DropChance = 25
+# Drops
+
+```
+ENT.DropItem = nil
+ENT.DropChance = 0
+```
 
 DropChance uses percentages from 0 to 100.
 
@@ -181,13 +207,11 @@ DropChance uses percentages from 0 to 100.
 
 Runs once when the NPC spawns.
 
-Example:
+```
+function ENT:CustomInit()
 
-    function ENT:CustomInit()
-
-        self.NextAttack = 0
-
-    end
+end
+```
 
 ---
 
@@ -195,13 +219,11 @@ Example:
 
 Runs while the NPC is alive.
 
-Example:
+```
+function ENT:CustomThink()
 
-    function ENT:CustomThink()
-
-        -- Custom behavior
-
-    end
+end
+```
 
 ---
 
@@ -209,13 +231,11 @@ Example:
 
 Runs when the NPC dies.
 
-Example:
+```
+function ENT:OnDead()
 
-    function ENT:OnDead()
-
-        self:EmitSound("npc/death.wav")
-
-    end
+end
+```
 
 ---
 
@@ -223,49 +243,56 @@ Example:
 
 Hide an NPC:
 
-    ENT.Spawnable = false
+```
+ENT.Spawnable = false
+```
 
 Show an NPC:
 
-    ENT.Spawnable = true
+```
+ENT.Spawnable = true
+```
 
-Set category:
+Category:
 
-    ENT.Category = "x308 NPCs"
+```
+ENT.Category = "x308 NPCs"
+```
 
 ---
 
 # Design
 
-npc_x308_base is meant to stay simple.
+npc_x308_base is designed to stay lightweight.
 
 It does not force:
 
-- A combat system
-- A movement system
-- A faction system
-- A projectile system
-- An animation system
+* A specific combat system
+* A specific movement system
+* A specific faction system
+* A specific projectile system
 
-NPCs decide what they need.
+x308 provides optional helpers, while NPCs decide how they use them.
 
-This allows x308 to support:
+NPCs define their own:
 
-- Plants
-- Zombies
-- Bosses
-- Turrets
-- Friendly NPCs
-- Hostile NPCs
-- Custom AI
+* Stats
+* Attacks
+* Movement behavior
+* Factions
+* Projectiles
+* Abilities
+* Special logic
 
 ---
 
 # Goals
 
-- Keep NPC code clean
-- Avoid repeating systems
-- Make stats easy to edit
-- Support small and large NPCs
-- Allow custom behavior
-- Keep the base lightweight
+* Keep NPC code clean
+* Avoid repeating systems
+* Make stats easy to edit
+* Support small and large NPCs
+* Allow custom behavior
+* Keep the base lightweight
+* Provide reusable NPC systems
+* Let NPCs control their own stats and behavior
