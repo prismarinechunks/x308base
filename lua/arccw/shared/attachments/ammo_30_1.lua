@@ -1,0 +1,15 @@
+att.PrintName="[308]Lighter Ammo"
+att.Icon=Material("icon16/bullet_black.png")
+att.Description="Lighter height."
+att.Desc_Pros={}
+att.Desc_Cons={}
+att.AutoStats=true
+att.Slot="ammo_bullet"
+att.Mult_SpeedMult=1.2
+att.Mult_ReloadTime=.95
+att.Mult_Damage=0.75
+att.Mult_DamageMin=0.8
+att.Mult_SightTime=0.9
+--att.Mult_Precision=0.25
+att.Mult_Penetration=.75
+att.Mult_Recoil=0.8

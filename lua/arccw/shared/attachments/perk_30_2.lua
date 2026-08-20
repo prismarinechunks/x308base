@@ -1,0 +1,15 @@
+att.PrintName="[308]Minigun Style"
+att.Icon=Material("icon16/bullet_go.png")
+att.Description="faster fire rate!"
+att.Desc_Pros={}
+att.Desc_Cons={}
+att.AutoStats=true
+att.Slot="perk"
+att.Mult_Damage=0.7
+att.Mult_SightTime=1.5
+att.Mult_ReloadTime=1.2
+att.Mult_Recoil=1.1
+att.Mult_RPM=1.5
+att.Mult_CycleTime=.5
+att.Mult_DrawTime=1.25
+att.Mult_HolsterTime=1.25

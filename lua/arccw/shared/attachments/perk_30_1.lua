@@ -1,0 +1,14 @@
+att.PrintName="[308]Recoiless"
+att.Icon=Material("icon16/cog.png")
+att.Description=":."
+att.Desc_Pros={}
+att.Desc_Cons={"- But side effect still valid right?"}
+att.AutoStats=true
+att.Slot="perk"
+att.Mult_SightTime=2
+att.Mult_ReloadTime=1.5
+att.Mult_Recoil=0
+att.Mult_RPM=.75
+att.MagReducer=true
+att.Mult_DrawTime=1.1
+att.Mult_HolsterTime=1.1

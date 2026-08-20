@@ -1,0 +1,11 @@
+SWEP.PrintName    = ""
+SWEP.Base = "308_wm_b"
+SWEP.ShowWorldModel = false
+SWEP.WElements = {
+	["2"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_L_Forearm", rel = "", pos = Vector(14.041, 0.564, -0.468), angle = Angle(4, -0.396, -19.897), size = Vector(2.5, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0},
+	["1"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_R_UpperArm", rel = "", pos = Vector(2.993, 0.259, -0.053), angle = Angle(0, -0.982, -31.931), size = Vector(1.6, 1.21, 1.21), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0},
+	["4"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_L_UpperArm", rel = "", pos = Vector(2.993, 0.259, -0.053), angle = Angle(0, -0.982, -31.931), size = Vector(1.6, 1.21, 1.21), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0},
+	["6"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_L_Calf", rel = "", pos = Vector(2.993, 0.259, -0.053), angle = Angle(0, -0.982, -31.931), size = Vector(1.6, 1.21, 1.21), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0},
+	["5"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_R_Calf", rel = "", pos = Vector(2.993, 0.259, -0.053), angle = Angle(0, -0.982, -31.931), size = Vector(1.6, 1.21, 1.21), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0},
+	["3"] = { type = "Model", model = "models/hunter/blocks/cube025x025x025.mdl", bone = "ValveBiped.Bip01_R_Forearm", rel = "", pos = Vector(14.321, 0.561, 0.166), angle = Angle(-3.405, 0.788, -16.659), size = Vector(2.6, 1, 1), color = Color(255, 255, 255, 255), surpresslightning = false, material = "brick/brick_model", skin = 0}
+}

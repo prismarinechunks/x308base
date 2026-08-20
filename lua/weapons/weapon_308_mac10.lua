@@ -1,0 +1,42 @@
+SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
+SWEP.PrintName = "MAC-10"
+SWEP.Category = "x308 Base | Guns"
+SWEP.HoldType = "revolver"
+SWEP.ViewModel = "models/weapons/cstrike/c_smg_mac10.mdl"
+SWEP.WorldModel = "models/weapons/w_smg_mac10.mdl"
+SWEP.NormalDraw=true
+SWEP.DrawAnim="mac10_draw"
+SWEP.ReloadAnim="mac10_reload"
+SWEP.IdleAnim="mac10_idle"
+SWEP.Primary.ClipSize = 30
+SWEP.Primary.DefaultClip = 30
+SWEP.Primary.Automatic = true
+SWEP.Primary.Ammo = "pistol"
+
+SWEP.Slot = 2
+SWEP.SlotPos = 0
+SWEP.Spawnable = true
+SWEP.PA_Sound = "weapons/mac10/mac10-1.wav"
+SWEP.PA_Damage = 28
+SWEP.PA_Delay = .07
+SWEP.PA_Recoil = .7
+SWEP.PA_Spread = .013
+SWEP.PA_AimSpread = .01
+SWEP.PA_AimRecoil = .66
+SWEP.SA_SightFOV = 65
+
+SWEP.TextType = "308CS"
+SWEP.Text = "l"
+SWEP.CustomAmmoIcon ="M"
+
+SWEP.SA_Delay = .1
+SWEP.DrawTime = .5
+SWEP.StopRAnimTime = 2.2
+SWEP.ReloadTime = 2.3
+SWEP.ClipoutTime = .75
+SWEP.ClipinTime = 1.9
+SWEP.ReloadTime2 = 3.1
+SWEP.BoltPullTime=2.5
+SWEP.SightPos = Vector(-10.01,130,1.85)
+SWEP.SightAng = Angle(0,-5.3,-6.1)
+SWEP.CenterPos = Vector(-2,90,1)
