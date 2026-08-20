@@ -4,23 +4,34 @@
 
 x308 projectiles are reusable projectile entities designed for NPC attacks.
 
-They handle:
+Projectiles handle:
 
 - Movement
-- Damage
 - Collision
+- Damage
 - Effects
 - Sounds
 - Status effects
-- Custom behavior
+- Custom impact behavior
 
-NPCs can use the same projectile entity while changing its stats.
+NPCs decide the projectile's stats when they fire it.
+
+This allows multiple NPCs to use the same projectile while having different:
+
+- Damage values
+- Speeds
+- Lifetimes
+- Effects
+- Colors
+- Special abilities
+
+The projectile entity handles how it works. The NPC decides what it should do.
 
 ---
 
 # Entity Setup
 
-Projectile entities are usually stored in:
+Projectile entities are stored in:
 
     lua/entities/
 
@@ -32,9 +43,41 @@ Example:
     ├── init.lua
     └── cl_init.lua
 
-NPCs can spawn projectiles using:
+NPCs choose their projectile:
 
     ENT.Projectile = "obj_x308_projectile"
+
+---
+
+# NPC Projectile Stats
+
+NPCs control projectile settings.
+
+Example:
+
+    ENT.Projectile = "obj_x308_projectile"
+
+    ENT.ProjectileDamage = 25
+    ENT.ProjectileSpeed = 1600
+    ENT.ProjectileLife = 8
+    ENT.ProjectileRadius = 50
+
+When the NPC fires, these values are passed to the projectile.
+
+Different NPCs can use the same projectile with different stats.
+
+Example:
+
+Peashooter:
+
+    Damage = 7
+    Speed = 1600
+
+Boss:
+
+    Damage = 100
+    Speed = 800
+    Radius = 200
 
 ---
 
@@ -44,11 +87,13 @@ NPCs can spawn projectiles using:
 
     ENT.Damage = 25
 
-Controls how much damage the projectile deals.
+Controls damage dealt on impact.
+
+Usually set by the NPC.
 
 Example:
 
-    ENT.Damage = 50
+    projectile.Damage = self.ProjectileDamage
 
 ---
 
@@ -56,13 +101,13 @@ Example:
 
     ENT.Radius = 50
 
-Used for splash damage projectiles.
+Controls splash damage range.
+
+Set to 0 for direct damage only.
 
 Example:
 
-    ENT.Radius = 150
-
-Set to 0 for direct hit only.
+    projectile.Radius = 150
 
 ---
 
@@ -70,11 +115,9 @@ Set to 0 for direct hit only.
 
     ENT.LifeTime = 8
 
-Controls how long the projectile exists before being removed.
+Controls how long the projectile exists.
 
-Example:
-
-    ENT.LifeTime = 10
+After the lifetime expires, the projectile is removed.
 
 ---
 
@@ -82,11 +125,9 @@ Example:
 
     ENT.Speed = 1600
 
-Controls projectile travel speed.
+Controls projectile movement speed.
 
-Example:
-
-    ENT.Speed = 2000
+Usually assigned by the NPC when launched.
 
 ---
 
@@ -94,11 +135,11 @@ Example:
 
     ENT.Explosion = false
 
-Enables explosion effects.
+Controls explosion effects.
 
 Example:
 
-    ENT.Explosion = true
+    projectile.Explosion = true
 
 ---
 
@@ -106,7 +147,7 @@ Example:
 
     ENT.DamageType = DMG_BULLET
 
-Controls the damage type.
+Controls the damage type used.
 
 Examples:
 
@@ -118,74 +159,36 @@ Examples:
 
 # Visual Settings
 
-## Projectile Model
+Projectile visuals can be changed by either the projectile itself or the NPC.
 
-Example:
+Examples:
 
-    self:SetModel(
-        "models/hunter/misc/sphere025x025.mdl"
-    )
+    projectile.PeaColor = Color(0,255,0)
 
-Projectiles can use any model.
+    projectile:SetModelScale(0.35)
 
----
-
-## Color
-
-Example:
-
-    ENT.PeaColor = Color(0,255,0)
-
-Changes projectile color.
+This allows different NPCs to share a projectile but use different visuals.
 
 ---
 
-## Model Scale
-
-Example:
-
-    self:SetModelScale(0.35)
-
-Changes projectile size.
-
----
-
-## Trail
-
-Projectiles can use trails:
-
-    util.SpriteTrail(
-        self,
-        0,
-        Color(0,255,0),
-        true,
-        4,
-        0,
-        0.4,
-        1,
-        "trails/laser"
-    )
-
----
-
-# Movement
+# Projectile Movement
 
 Projectiles require physics to move.
 
-The projectile must have:
-
-    MOVETYPE_VPHYSICS
-
-and:
-
-    SOLID_VPHYSICS
-
-
-Example:
+Required:
 
     self:SetMoveType(MOVETYPE_VPHYSICS)
 
     self:SetSolid(SOLID_VPHYSICS)
+
+The projectile entity is responsible for movement.
+
+The NPC only provides:
+
+- Spawn position
+- Direction
+- Speed
+- Owner
 
 ---
 
@@ -215,32 +218,33 @@ Example:
 
     end
 
-NPCs can then fire:
+NPC example:
 
     projectile:Launch(
         position,
         direction,
-        npc
+        self
     )
 
 ---
 
 # Collision
 
-When the projectile hits something:
+Projectiles handle their own collisions.
+
+When a projectile hits something:
 
     PhysicsCollide
 
-is called.
+runs.
 
-Example:
+The projectile decides:
 
-    function ENT:PhysicsCollide(data,phys)
-
-        local hit =
-            data.HitEntity
-
-    end
+- Damage
+- Effects
+- Sounds
+- Status effects
+- Removal
 
 ---
 
@@ -262,13 +266,13 @@ Example:
         self
     )
 
-    hit:TakeDamageInfo(dmg)
+    target:TakeDamageInfo(dmg)
 
 ---
 
-# Effects
+# Impact Effects
 
-Projectiles can create impact effects.
+Projectiles can create their own impact effects.
 
 Example:
 
@@ -287,86 +291,71 @@ Example:
 
 # Sounds
 
-## Fire Sound
+Projectile sounds are controlled by the projectile.
 
-Example:
+Fire sound:
 
     ENT.FireSound = "weapons/fire.wav"
 
----
-
-## Impact Sound
-
-Example:
+Impact sound:
 
     ENT.ImpactSound = "physics/body/body_medium_impact.wav"
+
+NPCs can override these when needed.
 
 ---
 
 # Status Effects
 
-Projectiles can apply effects after hitting.
+Projectiles can apply extra effects.
 
 Examples:
 
 - Slow
 - Poison
-- Burning
+- Burn
 - Infection
 - Knockback
 
----
-
-## Slow Example
-
-Variables:
-
-    ENT.SlowEnabled = true
-
-    ENT.SlowAmount = 0.5
-
-    ENT.SlowTime = 3
-
 Example:
 
-    target:SetPlaybackRate(
-        self.SlowAmount
-    )
+    projectile.SlowEnabled = true
+
+    projectile.SlowTime = 3
 
 ---
 
 # Ownership
 
-Projectiles should always have an owner.
+NPCs should always assign ownership.
 
 Example:
 
     projectile:SetOwner(
-        npc
+        self
     )
 
-The owner is used for:
+The owner controls:
 
 - Damage attribution
+- Kill credit
 - Faction checks
-- Kill tracking
+- Friendly fire checks
 
 ---
 
-# NPC Usage Example
+# NPC Example
 
-Example NPC projectile setup:
+Example NPC setup:
 
     ENT.Projectile = "obj_x308_projectile"
 
     ENT.ProjectileDamage = 25
-
     ENT.ProjectileSpeed = 1600
-
     ENT.ProjectileLife = 8
 
 
-Creating the projectile:
+Firing:
 
     local projectile =
         ents.Create(
@@ -382,12 +371,19 @@ Creating the projectile:
         self.ProjectileSpeed
 
 
+    projectile.LifeTime =
+        self.ProjectileLife
+
+
     projectile:SetOwner(
         self
     )
 
 
     projectile:Spawn()
+
+The NPC controls the stats.
+The projectile controls the behavior.
 
 ---
 
@@ -398,8 +394,8 @@ Creating the projectile:
 Cause:
 
 - Missing PhysicsInit
-- Wrong MoveType
-- Model has no physics mesh
+- Invalid model
+- Wrong movement type
 
 Fix:
 
@@ -413,12 +409,12 @@ Fix:
 
 ---
 
-## Projectile stays still
+## Projectile does not move
 
 Cause:
 
-- Launch function missing
-- Velocity not applied
+- Launch was not called
+- Velocity was never applied
 
 Fix:
 
@@ -447,11 +443,13 @@ Fix:
 
 x308 projectiles are designed to:
 
-- Be reusable
 - Work with any NPC
-- Support custom effects
 - Keep NPC code simple
-- Allow easy stat editing
-- Support PvZ and other x308 systems
+- Allow NPC-specific stats
+- Support custom effects
+- Support different factions
+- Allow one projectile to be reused by many NPCs
 
-Projectiles should handle their own movement and impact logic while NPCs only decide when and where to fire.
+NPCs decide the projectile's stats.
+
+Projectiles decide how those stats are handled.
