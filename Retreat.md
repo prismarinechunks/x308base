@@ -1,321 +1,219 @@
-```md id="x308retreatdocs"
 # X308 Retreat System
 ## Created By Xero Chunks
 
----
+## About
 
-# About
+X308 Retreat is an optional AI module for X308 Base.
 
-X308 Retreat is an optional AI behavior module for Garry's Mod NPCs.
+It allows X308 NPCs to enter a retreat state when they meet retreat conditions.
 
-It allows NPCs to automatically enter a retreat state when they become damaged or meet retreat conditions.
+Requirements:
 
-The system is designed to work with:
+- X308 Base must be installed.
+- Your NPC must use X308 Base or X308 Man.
+- Your NPC must support X308 systems.
 
-- X308 Base NPCs
-- Single-file NPCs
-- Custom NPC addons
-- Enemy NPCs
-- Friendly NPCs
-- PvE systems
-
-X308 Retreat does not replace your NPC AI. It only provides the retreat state so your NPC can decide what to do when retreating.
-
-Examples:
-- Run away
-- Find cover
-- Return to a spawn point
-- Regroup with allies
-- Stop attacking
-- Enter a defensive mode
+X308 Retreat will not work on normal NPCs that do not use X308.
 
 ---
 
-# Installation
+## Enabling Retreat
 
-Place the addon in:
-
-```
-
-garrysmod/addons/x308_retreat/
-
-```
-
-The addon should contain:
-
-```
-
-x308_retreat/
-└── lua/
-└── x308_retreat/
-├── shared.lua
-├── init.lua
-└── cl_init.lua
-
-````
-
-Restart your server after installation.
-
----
-
-# Enable Retreat On Any NPC
-
-Open your NPC Lua file.
+Open your X308 NPC Lua file.
 
 Add:
 
-```lua
 ENT.X308_Retreat = true
-````
+
 
 Example:
 
-```lua
-AddCSLuaFile()
-
-ENT.Base = "npc_citizen"
-
-ENT.PrintName = "My Custom NPC"
-
-ENT.X308_Retreat = true
-```
-
-Your NPC now supports X308 Retreat.
-
----
-
-# X308 Base NPC Example
-
-If you are using X308 Base:
-
-```lua
 ENT.Base = "npc_x308_base"
 
-ENT.PrintName = "X308 Enemy"
+ENT.PrintName = "My X308 Enemy"
 
 ENT.X308_Retreat = true
-```
+
+
+Your NPC now has retreat enabled.
 
 ---
 
-# Module Style Example
-
-If your NPC uses X308 modules:
-
-```lua
-ENT.X308_Modules = {
-    Retreat = true
-}
-```
+## X308 Man Example
 
 Example:
 
-```lua
-ENT.Base = "npc_x308_base"
+ENT.Base = "npc_x308_man"
 
-ENT.PrintName = "Advanced Enemy"
+ENT.PrintName = "X308 Soldier"
 
-ENT.X308_Modules = {
-    Retreat = true
-}
-```
+ENT.X308_Retreat = true
+
 
 ---
 
-# How Retreat Works
+## X308 Module Example
+
+If your NPC uses X308 module settings:
+
+ENT.X308_Modules = {
+
+    Retreat = true
+
+}
+
+
+Example:
+
+ENT.Base = "npc_x308_base"
+
+ENT.PrintName = "Advanced X308 NPC"
+
+ENT.X308_Modules = {
+
+    Retreat = true
+
+}
+
+
+---
+
+## How It Works
 
 When enabled:
 
-1. NPC health is checked.
-2. X308 Retreat compares health against the retreat threshold.
-3. If health is low enough, retreat begins.
-4. NPC receives the retreat state.
-5. Your AI decides how the NPC moves or reacts.
+1. X308 checks the NPC.
+2. NPC health reaches the retreat threshold.
+3. X308 Retreat activates.
+4. The NPC enters the retreat state.
+5. X308 AI handles the behavior.
 
-The system does not force movement because every NPC handles retreat differently.
+The retreat system does not force a specific action.
+
+Developers can decide what the NPC does:
+
+- Run away
+- Find cover
+- Regroup
+- Return to an area
+- Stop attacking
+- Change behavior
 
 ---
 
-# Detecting Retreat
+## Checking Retreat State
 
-When an NPC is retreating:
+While retreating:
 
-```lua
-self.X308_Retreating == true
-```
+self.X308_Retreating = true
+
+
+After retreat ends:
+
+self.X308_Retreating = false
+
 
 Example:
 
-```lua
 function ENT:Think()
 
     if self.X308_Retreating then
 
-        print("NPC is retreating")
+        -- Retreat behavior
 
     end
 
 end
-```
+
 
 ---
 
-# Creating Retreat Behavior
+## Adding Custom Retreat Behavior
 
-Example: Make an NPC stop attacking while retreating.
+Example:
 
-```lua
-function ENT:CanAttack()
-
-    if self.X308_Retreating then
-        return false
-    end
-
-    return true
-
-end
-```
-
----
-
-# Example: Run Away During Retreat
-
-```lua
 function ENT:X308RetreatBehavior()
 
-    if not self.X308_Retreating then
-        return
-    end
+    if not self.X308_Retreating then return end
 
-    local escapePos = self:GetPos() - self:GetForward() * 500
-
-    self:SetLastPosition(escapePos)
+    -- Add custom movement or behavior here
 
 end
-```
 
-Call this inside your NPC Think loop.
 
 ---
 
-# Configuration
+## Configuration
 
-Default configuration:
+Default settings:
 
-```lua
 X308_Retreat.Config = {
 
-    -- Enables the system
     Enabled = true,
 
-    -- Health percentage that triggers retreat
     HealthPercent = 25,
 
-    -- How long retreat state lasts
     RetreatTime = 8,
 
-    -- Time before retreat can trigger again
     Cooldown = 10
 
 }
-```
+
 
 ---
 
-# Hooks
+## Hooks
 
-## Retreat Started
+Retreat Started:
 
-Runs when an NPC enters retreat.
-
-```lua
 hook.Add(
     "X308_RetreatStarted",
-    "MyNPC_RetreatStarted",
+    "Example",
     function(ent)
 
         print(ent:GetClass().." started retreating")
 
     end
 )
-```
 
----
 
-## Retreat Ended
+Retreat Ended:
 
-Runs when an NPC leaves retreat.
-
-```lua
 hook.Add(
     "X308_RetreatEnded",
-    "MyNPC_RetreatEnded",
+    "Example",
     function(ent)
 
         print(ent:GetClass().." stopped retreating")
 
     end
 )
-```
+
 
 ---
 
-# Custom Conditions
+## Compatibility
 
-Developers can add their own checks:
+Requires:
 
-Example:
+- X308 Base
+- X308 Man
+- X308 NPC framework support
 
-```lua
-hook.Add(
-    "X308_ShouldRetreat",
-    "MyCustomRetreat",
-    function(ent)
 
-        if ent:GetEnemy() then
+Works with:
 
-            return true
+- Custom X308 enemies
+- PvZ zombies
+- Military NPCs
+- Monsters
+- Any NPC built on X308
 
-        end
-
-    end
-)
-```
 
 ---
 
-# Recommended Usage
-
-For best performance:
-
-Use X308 Retreat with your NPC's AI loop:
-
-```lua
-X308_Retreat:Check(self)
-```
-
-This avoids unnecessary checks and gives your NPC full control.
-
----
-
-# Compatibility
-
-X308 Retreat works with:
-
-* NPCs in one Lua file
-* Scripted NPCs
-* X308 Base NPCs
-* Custom AI frameworks
-
-No special base class is required.
-
----
-
-# Credits
+## Credits
 
 X308 Retreat
 
 Created By Xero Chunks
-
-```
-```
