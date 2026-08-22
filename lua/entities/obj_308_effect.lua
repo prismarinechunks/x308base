@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="E"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.Spawnable=false
 ENT.RenderGroup=RENDERGROUP_TRANSLUCENT
 ENT.DisaSpeed=4

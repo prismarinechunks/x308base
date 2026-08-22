@@ -1,5 +1,5 @@
 SWEP.PrintName=GAME308_LANWEP["clearself"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.Primary.ClipSize = -1
 SWEP.Primary.DefaultClip = -1
 SWEP.Primary.Automatic = false

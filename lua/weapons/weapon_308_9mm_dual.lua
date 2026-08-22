@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basedual"
 SWEP.PrintName=GAME308_LANWEP["double"]..".9mm Pistol"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "duel"
 SWEP.ViewModel = "models/weapons/cstrike/c_pist_elite.mdl"
 SWEP.WorldModel = "models/weapons/w_pistol.mdl"

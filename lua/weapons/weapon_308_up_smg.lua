@@ -5,7 +5,7 @@ AddCSLuaFile()
 SWEP.Base = "weapon_308_up_p"
 
 SWEP.PrintName = "Upgradable SMG"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 
 SWEP.Spawnable = true
 SWEP.Slot = 2

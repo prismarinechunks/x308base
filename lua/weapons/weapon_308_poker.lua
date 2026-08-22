@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName=GAME308_LANWEP["poker"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.HoldType = "knife"
 SWEP.ViewModel = "models/weapons/c_grenade.mdl"
 SWEP.WorldModel = "models/hunter/plates/plate075x105.mdl"

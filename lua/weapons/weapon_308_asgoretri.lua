@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["asgorewep"]
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "melee2"
 SWEP.RemoveOnDrop=true
 SWEP.RemoveOnWorld=true

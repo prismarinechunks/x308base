@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName=GAME308_LANWEP["famasa"]
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ViewModel = "models/weapons/cstrike/c_rif_famas.mdl"
 SWEP.WorldModel = "models/weapons/w_rif_famas.mdl"

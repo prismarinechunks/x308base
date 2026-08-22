@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_baseshotgun" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "M3-Lighter"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ViewModel = "models/weapons/cstrike/c_shot_m3super90.mdl"
 SWEP.WorldModel = "models/weapons/w_shot_m3super90.mdl"

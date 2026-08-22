@@ -8,7 +8,7 @@ if GAME308_LANMath == 2 then
     ENT.PrintName = "僵尸坦克"
     end
 
-    ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
     ENT.Scale = 2
 

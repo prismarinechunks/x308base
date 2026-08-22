@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName=GAME308_LANWEP["slicktalk"].." Plus"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "smg"
 SWEP.ViewModel = "models/weapons/cstrike/c_smg_tmp.mdl"
 SWEP.WorldModel = "models/weapons/w_smg_tmp.mdl"

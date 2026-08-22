@@ -6,7 +6,7 @@ ENT.PrintName = GAME308_LANWEP["solider"] .. "(Heavy)"
 
 ENT.BloodColor = 3
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.HP = 250
 

@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["sh"]
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "melee2"
 SWEP.WorldModel = "models/weapons/w_crowbar.mdl"
 SWEP.Multiple=5

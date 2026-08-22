@@ -4,7 +4,7 @@ SWEP.PrintName = "分裂者"
 else
 SWEP.PrintName = "Divider"
 end
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ViewModel = "models/weapons/cstrike/c_rif_famas.mdl"
 SWEP.WorldModel = "models/weapons/w_rif_famas.mdl"

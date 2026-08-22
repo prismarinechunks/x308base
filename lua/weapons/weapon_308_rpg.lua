@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "RPG-7"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "rpg"
 SWEP.ViewModel = "models/weapons/c_smg1.mdl"
 SWEP.WorldModel = "models/weapons/w_rocket_launcher.mdl"

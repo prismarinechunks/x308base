@@ -3,7 +3,7 @@ SWEP.PrintName="Strong Knife"
 if GAME308_LANMath==2 then
 SWEP.PrintName="背刺银刃"
 end
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "knife"
 SWEP.Slot = 0
 SWEP.Spawnable = true

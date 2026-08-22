@@ -14,7 +14,7 @@ if GAME308_LANMath == 2 then
     ENT.Acceleration = 900
     ENT.Deceleration = 100
 
-    ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
     ENT.HP = 60
 

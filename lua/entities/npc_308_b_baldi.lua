@@ -6,7 +6,7 @@ ENT.PrintName="Baldi[Remade]"
 ENT.KillName="Baldi"
 
 ENT.AdminOnly=true
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions={"FACTION_BALDI"}
 

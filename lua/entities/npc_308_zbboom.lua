@@ -7,7 +7,7 @@ ENT.PrintName = GAME308_LANWEP["zbboom"]
 ENT.Infection = "npc_308_freshdead"
 ENT.InfectionPM = true
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_ZOMBIES}
 

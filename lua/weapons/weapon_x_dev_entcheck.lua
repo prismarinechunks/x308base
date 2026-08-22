@@ -3,7 +3,7 @@ AddCSLuaFile()
 
 SWEP.PrintName = "[DEV]"..GAME308_LANWEP["entcheck"]
 SWEP.Author = "QQ3088083421"
-SWEP.Category = "x308 Base | Development"
+SWEP.Category = "X Base | Development"
 
 SWEP.Slot = 0
 SWEP.SlotPos = 4

@@ -1,7 +1,7 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["toyknife"]
 --wrong name
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "knife"
 --SWEP.CDWInfoBox=true
 --SWEP.Author="Made of plastic. A rarity nowadays."

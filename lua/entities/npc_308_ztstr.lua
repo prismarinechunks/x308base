@@ -4,7 +4,7 @@ ENT.Base = "npc_308_zt"
 
 ENT.PrintName = GAME308_LANWEP["ztstr"]
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_ZOMBIES}
 

@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["sh"].."+"
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "ar2"
 SWEP.Multiple=5
 

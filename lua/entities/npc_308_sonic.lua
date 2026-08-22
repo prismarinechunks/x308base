@@ -3,7 +3,7 @@ AddCSLuaFile()
 ENT.Base = "npc_308_base_s"
 ENT.PrintName = "Sonic"
 ENT.AdminOnly = true
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 ENT.Factions = {FACTION_REBELS}
 
 ENT.Acceleration = 350

@@ -6,7 +6,7 @@ ENT.Base = "npc_308_man"
 
 ENT.PrintName = GAME308_LANWEP["target"]
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.BloodColor = 3
 

@@ -6,7 +6,7 @@ ENT.PrintName = GAME308_LANWEP["mansum"]
 
 ENT.AdminOnly = true
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_REBELS}
 

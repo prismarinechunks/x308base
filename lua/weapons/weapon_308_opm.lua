@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["opm"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.HoldType = "fist"
 SWEP.ViewModel = "models/weapons/c_arms.mdl"
 SWEP.ShowWorldModel = false

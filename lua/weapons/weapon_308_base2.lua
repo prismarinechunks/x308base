@@ -1,7 +1,7 @@
 SWEP.Base = "weapon_308_base"
 SWEP.PrintName = "308 Pistol"
 SWEP.HoldType="pistol"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.ViewModel = "models/weapons/c_pistol.mdl"
 SWEP.WorldModel = "models/weapons/w_pistol.mdl"
 SWEP.IsMCGun=1

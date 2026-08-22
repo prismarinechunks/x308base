@@ -3,7 +3,7 @@ AddCSLuaFile()
 ENT.Base = "npc_308_man"
 
 ENT.PrintName = GAME308_LANWEP["giant"]
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_REBELS}
 

@@ -5,7 +5,7 @@ ENT.PrintName = "Turret"
 if GAME308_LANMath == 2 then
 	ENT.PrintName = "炮塔"
 	end
-	ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 	ENT.Factions = {FACTION_REBELS}
 	ENT.BBox = Vector(40, 40, 40)
 	ENT.BBox2 = -Vector(40, 40, 40)

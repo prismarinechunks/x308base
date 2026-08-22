@@ -1,7 +1,7 @@
 SWEP.Base = "weapon_308_asgoretri"
 SWEP.PrintName=GAME308_LANWEP["asgorewep"]
 SWEP.TextColor=Color(math.random(0,255),math.random(0,255),math.random(0,255))
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.Melee1=65
 SWEP.MeleeAT=.16
 SWEP.MeleeOT=.4

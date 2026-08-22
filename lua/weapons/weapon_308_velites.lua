@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basedual" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName=GAME308_LANWEP["vamp"].."-I"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "duel"
 SWEP.ViewModel = "models/weapons/cstrike/c_pist_elite.mdl"
 SWEP.WorldModel = "models/weapons/w_pist_deagle.mdl"

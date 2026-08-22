@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_baseshotgun"
 SWEP.PrintName = "M3-BUFF"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "shotgun"
 SWEP.ViewModel = "models/weapons/cstrike/c_shot_m3super90.mdl"
 SWEP.WorldModel = "models/weapons/w_shot_m3super90.mdl"

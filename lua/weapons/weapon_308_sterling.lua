@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_baseflan"
 SWEP.PrintName = "Sterling"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ShowWorldModel=false
 SWEP.Slot = 2

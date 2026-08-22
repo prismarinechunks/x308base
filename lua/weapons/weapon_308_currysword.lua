@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName=GAME308_LANWEP["currysword"]
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "melee2"
 SWEP.CDWInfoBox=true
 SWEP.Author="QQ3088083421\n这是主角用过的剑"

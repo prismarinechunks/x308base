@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName=GAME308_LANWEP["spawner"]
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.AdminOnly=true
 ENT.Spawnable=true
 ENT.Timer=CurTime()

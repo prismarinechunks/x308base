@@ -11,7 +11,7 @@ ENT.BloodColor = 5
 
 ENT.BBox = Vector(10,10,20)
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_ZOMBIES}
 

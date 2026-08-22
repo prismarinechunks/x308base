@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName=GAME308_LANWEP["block"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.HoldType = "pistol"
 SWEP.ViewModel = "models/weapons/v_pistol.mdl"
 SWEP.WorldModel = "models/props_junk/wood_crate001a_damaged.mdl"

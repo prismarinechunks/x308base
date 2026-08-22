@@ -9,7 +9,7 @@ if GAME308_LANMath == 2 then
 
     ENT.Infection = "npc_308_freshdead"
     ENT.InfectionPM = true
-    ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
     ENT.HP = 15
     ENT.StartSpeed = 80

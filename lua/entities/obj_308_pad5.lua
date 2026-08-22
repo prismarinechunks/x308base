@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="Fire Pad"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.Editable=true
 ENT.AdminOnly=true
 ENT.Spawnable=true

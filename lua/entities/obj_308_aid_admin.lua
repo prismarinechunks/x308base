@@ -3,7 +3,7 @@ AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 
 ENT.PrintName = "Custom Health Kit"
-ENT.Category = "308 Base"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Editable = true
 

@@ -1,7 +1,7 @@
 if !util.IsValidModel("models/fosterz/weapons/viewmodels/c_deagle.mdl")then return end
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "CFS Deagle"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "revolver"
 SWEP.ViewModel = "models/fosterz/weapons/viewmodels/c_deagle.mdl"
 SWEP.ShowWorldModel=false

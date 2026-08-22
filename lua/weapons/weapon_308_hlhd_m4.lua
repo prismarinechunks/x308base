@@ -1,7 +1,7 @@
 if !util.IsValidModel("models/weapons/half-life/v_9mmar.mdl")then return end--ye ,3x Egg
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "HLHD M4"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ViewModel = "models/weapons/half-life/v_9mmar.mdl"
 SWEP.WorldModel = "models/weapons/half-life/w_9mmar.mdl"

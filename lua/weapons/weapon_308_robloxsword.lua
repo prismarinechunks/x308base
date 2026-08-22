@@ -2,7 +2,7 @@ SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName = "Linked Sword"
 SWEP.Multiple=9
 
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "pistol"
 SWEP.WorldModel = "models/weapons/w_crowbar.mdl"
 SWEP.Slot = 0

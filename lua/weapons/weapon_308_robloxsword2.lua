@@ -1,7 +1,7 @@
 SWEP.Base = "weapon_308_robloxsword"
 SWEP.PrintName = "Linked Sword"
 SWEP.AdminOnly=true
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.WorldModel = "models/weapons/w_crowbar.mdl"
 SWEP.Slot = 0
 SWEP.Spawnable = true

@@ -12,7 +12,7 @@ ENT.InfectionPM = true
 
 ENT.Model = "models/Humans/Group01/Male_Cheaple.mdl"
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Factions = {FACTION_ZOMBIES}
 

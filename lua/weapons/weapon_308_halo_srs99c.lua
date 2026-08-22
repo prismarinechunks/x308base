@@ -1,7 +1,7 @@
 if !util.IsValidModel("models/vuthakral/halo/weapons/c_hum_srs99c.mdl")then return end
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "HALO SRS99C"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.Slot = 2
 SWEP.SlotPos = 0

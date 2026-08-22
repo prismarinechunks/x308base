@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_baseflan"
 SWEP.PrintName = "308's Gun"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "revolver"
 SWEP.ViewModel = "models/weapons/cstrike/c_pist_usp.mdl"
 SWEP.WorldModel = "models/weapons/w_pist_usp.mdl"

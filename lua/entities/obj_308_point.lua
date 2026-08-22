@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="!Special Point"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.Spawnable=true
 ENT.RenderGroup=RENDERGROUP_TRANSLUCENT
 function ENT:Initialize()if SERVER then

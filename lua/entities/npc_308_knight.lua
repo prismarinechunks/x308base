@@ -12,7 +12,7 @@ if GAME308_LANMath == 2 then
 
     ENT.RunAct = ACT_RUN
 
-    ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
     ENT.Factions = {FACTION_REBELS}
 

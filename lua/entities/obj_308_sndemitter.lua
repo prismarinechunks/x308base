@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="Ambient Sound Emitter"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.RenderGroup=8
 ENT.Editable=true
 ENT.Spawnable=true

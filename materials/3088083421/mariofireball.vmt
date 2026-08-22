@@ -1,0 +1,14 @@
+"UnlitGeneric"
+{
+   "$basetexture" "3088083421/mariofireball"
+   "$alphatest"   "1"
+   "Proxies"
+   {
+      "AnimatedTexture"
+      {
+         "animatedtexturevar" "$basetexture"
+         "animatedtextureframenumvar" "$frame"
+         "animatedtextureframerate" 10
+      }
+   }
+}

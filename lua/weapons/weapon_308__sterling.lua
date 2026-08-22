@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base2" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "308 Sterling"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "ar2"
 SWEP.ShowWorldModel=false
 SWEP.Slot = 2

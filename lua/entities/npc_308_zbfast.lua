@@ -4,7 +4,7 @@ ENT.Base = "npc_308_zb"
 
 ENT.PrintName = GAME308_LANWEP["zbfast"]
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.Color = Color(199,199,99)
 

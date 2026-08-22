@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "[DEV]Entity Finder"
-SWEP.Category = "x308 Base | Development"
+SWEP.Category = "X Base | Development"
 SWEP.HoldType = "revolver"
 SWEP.ViewModel = "models/weapons/c_toolgun.mdl"
 SWEP.WorldModel = "models/weapons/w_toolgun.mdl"

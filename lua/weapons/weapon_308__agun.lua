@@ -4,7 +4,7 @@ SWEP.PrintName="!Attribute Gun"
 if GAME308_LANMath==2 then
 SWEP.PrintName="!属性枪"
 end
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "revolver"
 SWEP.ViewModel = "models/weapons/cstrike/c_pist_deagle.mdl"
 SWEP.WorldModel = "models/weapons/w_toolgun.mdl"

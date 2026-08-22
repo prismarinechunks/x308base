@@ -1,206 +1,424 @@
-if !CanGame308()then return end
-AddCSLuaFile("cl_init.lua")
-AddCSLuaFile("shared.lua")
-include('shared.lua')
-GAME308=0
-SF308=0
-SF308T=0
+-- Created By Xero Chunks
 
-if !game.SinglePlayer()then
-function ENT:SpawnFunction(ply, tr)
-	if (!tr.Hit) or ply.Shield then return end
-	local SpawnPos = tr.HitPos + tr.HitNormal
-	local ent = ents.Create( "obj_308_km" )
-	ent:SetPos(SpawnPos)
-	ent:Spawn()
-end
-end
-if SERVER then
-function ENT:Initialize()
-if GAME308>0 then self.Dont=1 self:Remove() return end
-self.Name=""
-self.Math=0
-self.EndM=0
-	self:SetMoveType(MOVETYPE_NONE)
-	self:SetSolid(SOLID_NONE)
-	self:SetNoDraw(true)
-	self.Timer=CurTime()+10
-	self.Timert=CurTime()
-	self.Phase=0
-	local tr = util.TraceHull({
-	start = self:GetPos(),
-	endpos = self:GetPos() +Vector(0,0,99999999),
-	filter = self,
-	})
-	if !(tr.Hit && tr.HitSky)then _308TextAll(GAME308_LAN["nosky"],{y=.9,fin=.15,chan=1})self:Remove()return nil
-	else
-	self.EPos=tr.HitPos
-	self.R=self:GetPos():Distance(tr.HitPos)
-	MsgAll("\ndistance:"..self.R)
-	if self.R<1500 then _308TextAll(GAME308_LAN["nosky1"],{y=.9,fin=.15,chan=1})self:Remove()return nil end end
-	self.PosZ=self.EPos.z-900
-	local e=ents.Create("prop_physics")
-	e:SetModel("models/effects/portalrift.mdl")
-	e:SetAngles(Angle(180,0,0))
-	e:SetPos(self.EPos-Vector(0,0,1350))
-	e:Spawn()
-	e:SetModelScale(15)
-	local w=ents.Create("prop_physics")
-	w:SetModel("models/props_phx/huge/road_long.mdl")
-	w:SetPos(self.EPos-Vector(0,0,800))
-	w:Spawn()
-	w:GetPhysicsObject():EnableMotion(false)
-	local w2=ents.Create("prop_physics")
-	w2:SetModel("models/props_phx/huge/road_long.mdl")
-	w2:SetPos(self.EPos-Vector(450,0,800))
-	w2:Spawn()
-	w2:GetPhysicsObject():EnableMotion(false)
-	local w3=ents.Create("prop_physics")
-	w3:SetModel("models/props_phx/huge/road_long.mdl")
-	w3:SetPos(self.EPos-Vector(-450,0,800))
-	w3:Spawn()
-	w3:GetPhysicsObject():EnableMotion(false)
-	local w1=ents.Create("prop_physics")
-	w1:SetModel("models/props_phx/huge/road_long.mdl")
-	w1:SetPos(self.EPos-Vector(-900,0,800))
-	w1:Spawn()
-	w1:SetColor(Color(255,0,0))
-	w1:GetPhysicsObject():EnableMotion(false)
-	local w4=ents.Create("prop_physics")
-	w4:SetModel("models/props_phx/huge/road_long.mdl")
-	w4:SetPos(self.EPos-Vector(900,0,800))
-	w4:Spawn()
-	w4:GetPhysicsObject():EnableMotion(false)
-	self:DeleteOnRemove(w)
-	self:DeleteOnRemove(w2)
-	self:DeleteOnRemove(w3)
-	self:DeleteOnRemove(w4)
-	self:DeleteOnRemove(w1)
-	self:DeleteOnRemove(e)
-	timer.Simple(32,function()if IsValid(self)and IsValid(w1)and IsValid(w4)then
-	w1:GetPhysicsObject():EnableMotion(true)
-	w1:GetPhysicsObject():Wake()
-	w4:SetColor(Color(255,0,0))
-	end end)
-	timer.Simple(52,function()if IsValid(self)and IsValid(w4)and IsValid(w3)then
-	w4:GetPhysicsObject():EnableMotion(true)
-	w4:GetPhysicsObject():Wake()
-	w3:SetColor(Color(255,0,0))
-	end end)
-	timer.Simple(72,function()if IsValid(self)and IsValid(w3)and IsValid(w2)then
-	w3:GetPhysicsObject():EnableMotion(true)
-	w3:GetPhysicsObject():Wake()
-	w2:SetColor(Color(255,0,0))
-	end end)
-	timer.Simple(92,function()if IsValid(self)and IsValid(w2)and IsValid(w)then
-	w2:GetPhysicsObject():EnableMotion(true)
-	w2:GetPhysicsObject():Wake()
-	w:SetColor(Color(255,0,0))
-	end end)
-	timer.Simple(107,function()if IsValid(self)and IsValid(w)then
-	w:SetModel("models/props_phx/huge/road_medium.mdl")
-	end end)
-	timer.Simple(113,function()if IsValid(self)and IsValid(w)then
-	w:SetModel("models/props_phx/huge/road_short.mdl")
-	end end)
-hook.Add("PlayerDisconnected","SF3081",function(p)if p.IsSF30A then self.Math=self.Math-1 end end)
-end
+if not CanGame308() then return end
 
-function ENT:OnRemove()
-if self.Dont then return end
-SF308T=0
-hook.Remove("SF3081")
-for _,p in pairs(player.GetAll())do
-Muss330(p)
-if self.Math>1 then
-p:ChatPrint(GAME308_LAN1["End1"])
-if p:Alive()then p:Kill()end
-end
-p:EmitSound("3088083421/mg/end.wav")
-p.IsSF30=false
-p.NextSpawnTime=CurTime()
-if self.EndM>9 then
-if p:Alive()then self.Name=p:Nick()end
-p:ChatPrint(GAME308_LAN1["r"]..self.Name)
-end
-end
-GAME308=0
-SF308=0
-end
-function ENT:Think()
-GAME308=1
-SF308=1
-for _,p in pairs(player.GetAll())do
-if IsValid(p)then
-if !p.IsSF30 then
-p.IsSF30=1
-p.IsSF30A=1
-p.SF308B=nil
-self.Math=self.Math+1
-else
-if !p:Alive()and p.IsSF30A and self.Phase>0 then
-p.IsSF30A=nil
-self.Math=self.Math-1
-end
-if self.Math<2 and self.Phase>0 and !game.SinglePlayer()||self.Math<1 then
-self.EndM=self.EndM+1
-if self.EndM>9 then
-SafeRemoveEntity(self)
-end
-end
-end
-end
-end
-local ti=math.floor(self.Timer-CurTime())
-for _,p in pairs(player.GetAll())do
-if self.Phase<1 then
-p:PrintMessage(4,GAME308_LAN1["gt7"]..GAME308_LAN1["t"]..ti..GAME308_LAN1["t0"])
-self.MathR=math.random(13)
-p.SF308B=nil
-elseif self.Phase<2 then
-p:PrintMessage(4,GAME308_LAN1["rt"]..ti..GAME308_LAN1["rs"]..self.Math)
-if p:GetPos().z<self.PosZ and p:Alive()then
-p:Kill()
-p.NextSpawnTime=CurTime()+110
-end
-if self.Timert<=CurTime()then self.Timert=CurTime()+.1
-local p=ents.Create("prop_physics")
-p:SetModel("models/props_c17/canister_propane01a.mdl")
-local ww=math.random(4)
-if ww<1 then ww=225 elseif ww<2 then ww=-225 elseif ww<3 then ww=-225 elseif ww<4 then ww=-675 else ww=675 end
-p:SetPos(self.EPos-Vector(ww,math.random(-1200,1200),600))
-p:Spawn()
-self:DeleteOnRemove(p)
-SafeRemoveEntityDelayed(p,10)
-end
-end
-end
-if self.Timer<=CurTime()then
-self.Phase=self.Phase+1
-if self.Phase<2 then
-for _,p in pairs(player.GetAll())do
-p:Spawn()
-p:SetPos(self:GetPos()+Vector(0,0,self.R-780))
-p:StripWeapons()
-p:SetMaxHealth(30)
-p:SetHealth(30)
-p:SetArmor(0)
-p:SetJumpPower(200)
-p:SetMaterial("")
-timer.Simple(2,function()if IsValid(self)and IsValid(p)then
-Muss330(p,"music/hl1_song11.mp3")
-p:SetRunSpeed(250)
-p:SetWalkSpeed(250)
-p:EmitSound("3088083421/mg/start"..math.random(3)..".wav")
-p:Give("weapon_physcannon")
-end end)
-end
-SF308T=1
-self.Timer=CurTime()+112
-elseif self.Phase>1 then
-SafeRemoveEntity(self)
-end
-end
-end
+	AddCSLuaFile("cl_init.lua")
+	AddCSLuaFile("shared.lua")
 
-end
+	include("shared.lua")
+
+	GAME308 = 0
+	SF308 = 0
+	SF308T = 0
+
+	if not game.SinglePlayer() then
+		function ENT:SpawnFunction(ply, tr)
+		if not IsValid(ply) or not tr.Hit or ply.Shield then return end
+			if #ents.FindByClass("obj_308_km") > 0 then return end
+
+				local ent = ents.Create("obj_308_km")
+				if not IsValid(ent) then return end
+
+					ent:SetPos(tr.HitPos + tr.HitNormal)
+					ent:SetCreator(ply)
+					ent:Spawn()
+					ent:Activate()
+
+					return ent
+					end
+					end
+
+					if SERVER then
+
+						function ENT:Initialize()
+						if GAME308 > 0 then
+							self.Dont = true
+							self:Remove()
+							return
+							end
+
+							for _, ent in ipairs(ents.FindByClass("obj_308_km")) do
+								if ent ~= self then
+									SafeRemoveEntity(ent)
+									end
+									end
+
+									self.Name = ""
+									self.Math = 0
+									self.EndM = 0
+									self.Phase = 0
+									self.Timer = CurTime() + 10
+									self.Timert = CurTime()
+
+									self.CreatedProps = {}
+									self.ActivePlayers = {}
+
+									self:SetMoveType(MOVETYPE_NONE)
+									self:SetSolid(SOLID_NONE)
+									self:SetNoDraw(true)
+
+									local tr = util.TraceHull({
+										start = self:GetPos(),
+															  endpos = self:GetPos() + Vector(0, 0, 99999999),
+															  filter = self,
+															  mins = Vector(-16, -16, -16),
+															  maxs = Vector(16, 16, 16)
+									})
+
+									if not tr.Hit or not tr.HitSky then
+										_308TextAll(GAME308_LAN["nosky"], {
+											y = 0.9,
+											fin = 0.15,
+											chan = 1
+										})
+
+										self.Dont = true
+										self:Remove()
+										return
+										end
+
+										self.EPos = tr.HitPos
+										self.R = self:GetPos():Distance(self.EPos)
+
+										if self.R < 1500 then
+											_308TextAll(GAME308_LAN["nosky1"], {
+												y = 0.9,
+												fin = 0.15,
+												chan = 1
+											})
+
+											self.Dont = true
+											self:Remove()
+											return
+											end
+
+											self.PosZ = self.EPos.z - 900
+
+											GAME308 = 1
+											SF308 = 1
+
+											local function CreateArenaProp(model, pos, ang, color)
+											local ent = ents.Create("prop_physics")
+											if not IsValid(ent) then return end
+
+												ent:SetModel(model)
+												ent:SetPos(pos)
+												ent:SetAngles(ang or angle_zero)
+
+												if color then
+													ent:SetColor(color)
+													end
+
+													ent:Spawn()
+													ent:Activate()
+
+													local phys = ent:GetPhysicsObject()
+													if IsValid(phys) then
+														phys:EnableMotion(false)
+														end
+
+														self:DeleteOnRemove(ent)
+														table.insert(self.CreatedProps, ent)
+
+														return ent
+														end
+
+														self.Portal = CreateArenaProp(
+															"models/effects/portalrift.mdl",
+											self.EPos - Vector(0, 0, 1350),
+																					  Angle(180, 0, 0)
+														)
+
+														if IsValid(self.Portal) then
+															self.Portal:SetModelScale(15, 0)
+															end
+
+															self.Road1 = CreateArenaProp(
+																"models/props_phx/huge/road_long.mdl",
+											self.EPos - Vector(0, 0, 800)
+															)
+
+															self.Road2 = CreateArenaProp(
+																"models/props_phx/huge/road_long.mdl",
+											self.EPos - Vector(450, 0, 800)
+															)
+
+															self.Road3 = CreateArenaProp(
+																"models/props_phx/huge/road_long.mdl",
+											self.EPos - Vector(-450, 0, 800)
+															)
+
+															self.Road4 = CreateArenaProp(
+																"models/props_phx/huge/road_long.mdl",
+											self.EPos - Vector(-900, 0, 800),
+																						 angle_zero,
+											Color(255, 0, 0)
+															)
+
+															self.Road5 = CreateArenaProp(
+																"models/props_phx/huge/road_long.mdl",
+											self.EPos - Vector(900, 0, 800)
+															)
+
+															self:ScheduleRoadEvent(32, self.Road4, self.Road5)
+															self:ScheduleRoadEvent(52, self.Road5, self.Road3)
+															self:ScheduleRoadEvent(72, self.Road3, self.Road2)
+															self:ScheduleRoadEvent(92, self.Road2, self.Road1)
+
+															timer.Simple(107, function()
+															if not IsValid(self) or not IsValid(self.Road1) then return end
+																self.Road1:SetModel("models/props_phx/huge/road_medium.mdl")
+																end)
+
+															timer.Simple(113, function()
+															if not IsValid(self) or not IsValid(self.Road1) then return end
+																self.Road1:SetModel("models/props_phx/huge/road_short.mdl")
+																end)
+
+															hook.Add("PlayerDisconnected", "SF3081_" .. self:EntIndex(), function(ply)
+															if not IsValid(self) then return end
+
+																if ply.IsSF30A then
+																	self.Math = math.max(self.Math - 1, 0)
+																	end
+
+																	self.ActivePlayers[ply] = nil
+																	end)
+
+															_308TextAll(GAME308_LAN["hp"], {
+																y = 0.2,
+																fin = 0.05
+															})
+															end
+
+															function ENT:ScheduleRoadEvent(delay, movingRoad, warningRoad)
+															timer.Simple(delay, function()
+															if not IsValid(self) then return end
+																if not IsValid(movingRoad) then return end
+
+																	local phys = movingRoad:GetPhysicsObject()
+
+																	if IsValid(phys) then
+																		phys:EnableMotion(true)
+																		phys:Wake()
+																		end
+
+																		if IsValid(warningRoad) then
+																			warningRoad:SetColor(Color(255, 0, 0))
+																			end
+																			end)
+															end
+
+															function ENT:OnRemove()
+															if self.Dont then return end
+
+																local hookName = "SF3081_" .. self:EntIndex()
+																hook.Remove("PlayerDisconnected", hookName)
+
+																SF308T = 0
+																GAME308 = 0
+																SF308 = 0
+
+																for _, ply in ipairs(player.GetAll()) do
+																	if IsValid(ply) then
+																		Muss330(ply)
+
+																		if self.Math > 1 then
+																			ply:ChatPrint(GAME308_LAN1["End1"])
+
+																			if ply:Alive() then
+																				ply:Kill()
+																				end
+																				end
+
+																				ply:EmitSound("3088083421/mg/end.wav")
+																				ply.IsSF30 = nil
+																				ply.IsSF30A = nil
+																				ply.SF308B = nil
+																				ply.NextSpawnTime = CurTime()
+																				end
+																				end
+																				end
+
+																				-- Created By Xero Chunks
+
+																				if not SERVER then return end
+
+																					function ENT:Think()
+																					if not IsValid(self) then return end
+
+																						GAME308 = 1
+																						SF308 = 1
+
+																						for _, ply in ipairs(player.GetAll()) do
+																							if IsValid(ply) then
+																								if not ply.IsSF30 then
+																									ply.IsSF30 = true
+																									ply.IsSF30A = true
+																									ply.SF308B = nil
+
+																									self.Math = self.Math + 1
+																									self.ActivePlayers[ply] = true
+																									else
+																										if not ply:Alive() and ply.IsSF30A and self.Phase > 0 then
+																											ply.IsSF30A = nil
+																											self.Math = math.max(self.Math - 1, 0)
+																											end
+
+																											if self.Phase > 0 and self.Math < 2 and not game.SinglePlayer() then
+																												self.EndM = self.EndM + 1
+
+																												if self.EndM > 9 then
+																													if ply:Alive() then
+																														self.Name = ply:Nick()
+																														end
+
+																														SafeRemoveEntity(self)
+																														return
+																														end
+																														elseif game.SinglePlayer() and self.Math < 1 then
+																															self.EndM = self.EndM + 1
+
+																															if self.EndM > 9 then
+																																SafeRemoveEntity(self)
+																																return
+																																end
+																																end
+																																end
+																																end
+																																end
+
+																																local ti = math.max(0, math.floor(self.Timer - CurTime()))
+
+																																for _, ply in ipairs(player.GetAll()) do
+																																	if not IsValid(ply) then continue end
+
+																																		if self.Phase < 1 then
+																																			ply:PrintMessage(
+																																				HUD_PRINTCENTER,
+													GAME308_LAN1["gt7"] ..
+													GAME308_LAN1["t"] ..
+													ti ..
+													GAME308_LAN1["t0"]
+																																			)
+
+																																			self.MathR = math.random(13)
+																																			ply.SF308B = nil
+
+																																			elseif self.Phase < 2 then
+																																				ply:PrintMessage(
+																																					HUD_PRINTCENTER,
+													 GAME308_LAN1["rt"] ..
+													 ti ..
+													 GAME308_LAN1["rs"] ..
+													 self.Math
+																																				)
+
+																																				if ply:GetPos().z < self.PosZ and ply:Alive() then
+																																					ply:Kill()
+																																					ply.NextSpawnTime = CurTime() + 110
+																																					end
+																																					end
+																																					end
+
+																																					if self.Phase >= 1 and self.Timert <= CurTime() then
+																																						self.Timert = CurTime() + 0.1
+
+																																						local prop = ents.Create("prop_physics")
+
+																																						if IsValid(prop) then
+																																							prop:SetModel("models/props_c17/canister_propane01a.mdl")
+
+																																							local positions = {
+																																								-675,
+																																								-225,
+																																								225,
+																																								675
+																																							}
+
+																																							local x = positions[math.random(#positions)]
+
+																																							prop:SetPos(
+																																								self.EPos -
+																																								Vector(
+																																									x,
+											   math.random(-1200, 1200),
+																																									   600
+																																								)
+																																							)
+
+																																							prop:Spawn()
+																																							prop:Activate()
+
+																																							local phys = prop:GetPhysicsObject()
+
+																																							if IsValid(phys) then
+																																								phys:EnableMotion(true)
+																																								end
+
+																																								self:DeleteOnRemove(prop)
+																																								SafeRemoveEntityDelayed(prop, 10)
+																																								end
+																																								end
+
+																																								if self.Timer <= CurTime() then
+																																									self.Phase = self.Phase + 1
+
+																																									if self.Phase == 1 then
+																																										for _, ply in ipairs(player.GetAll()) do
+																																											if not IsValid(ply) then continue end
+
+																																												ply:Spawn()
+
+																																												ply:SetPos(
+																																													self:GetPos() +
+																																													Vector(0, 0, self.R - 780)
+																																												)
+
+																																												ply:StripWeapons()
+																																												ply:StripAmmo()
+
+																																												ply:SetMaxHealth(30)
+																																												ply:SetHealth(30)
+																																												ply:SetArmor(0)
+
+																																												ply:SetRunSpeed(250)
+																																												ply:SetWalkSpeed(250)
+																																												ply:SetJumpPower(200)
+
+																																												ply:SetMaterial("")
+
+																																												timer.Simple(2, function()
+																																												if not IsValid(self) or not IsValid(ply) then return end
+
+																																													Muss330(
+																																														ply,
+													 "music/hl1_song11.mp3"
+																																													)
+
+																																													ply:EmitSound(
+																																														"3088083421/mg/start" ..
+																																														math.random(3) ..
+																																														".wav"
+																																													)
+
+																																													if not ply:HasWeapon("weapon_physcannon") then
+																																														ply:Give("weapon_physcannon")
+																																														end
+																																														end)
+																																												end
+
+																																												SF308T = 1
+																																												self.Timer = CurTime() + 112
+
+																																												elseif self.Phase > 1 then
+																																													SafeRemoveEntity(self)
+																																													return
+																																													end
+																																													end
+
+																																													self:NextThink(CurTime() + 0.1)
+																																													return true
+																																													end
+
+																																													end

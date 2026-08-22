@@ -1,7 +1,7 @@
 if !util.IsValidModel("models/vj_weapons/v_glock.mdl")and !util.IsValidModel("models/bms/weapons/v_glock.mdl")then return end--ye ,Egg
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "BM 9mm"
-SWEP.Category = "x308 Base | Guns"
+SWEP.Category = "X Base | Guns"
 SWEP.HoldType = "revolver"
 if util.IsValidModel("models/bms/weapons/v_glock.mdl")then
 SWEP.ViewModel = "models/bms/weapons/v_glock.mdl"

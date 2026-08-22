@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_baseflan" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "Toriel"
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "normal"
 SWEP.ViewModel = "models/weapons/c_arms.mdl"
 SWEP.WorldModel = "models/mechanics/robotics/a1.mdl"

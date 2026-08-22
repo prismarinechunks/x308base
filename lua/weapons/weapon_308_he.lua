@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 SWEP.PrintName = "HE Grenade"
-SWEP.Category = "x308 Base | Grenades"
+SWEP.Category = "X Base | Grenades"
 SWEP.HoldType = "normal"
 SWEP.ViewModel = "models/weapons/c_grenade.mdl"
 SWEP.WorldModel = "models/weapons/w_eq_fraggrenade.mdl"

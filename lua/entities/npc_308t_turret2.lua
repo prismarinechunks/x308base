@@ -5,7 +5,7 @@ ENT.PrintName = "Heavy Turret"
 if GAME308_LANMath == 2 then
 	ENT.PrintName = "重型炮塔"
 	end
-	ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 	ENT.HP = 225
 	ENT.Material = "phoenix_storms/cube"
 	ENT.Model = "models/hunter/misc/sphere175x175.mdl"

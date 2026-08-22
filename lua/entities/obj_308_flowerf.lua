@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS( "base_anim" )
 ENT.PrintName="Fire Ball"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.RenderGroup = RENDERGROUP_TRANSLUCENT
 
 if CLIENT then killicon.Add("obj_308_flowerf","3088083421/mariofireball",color_white)end

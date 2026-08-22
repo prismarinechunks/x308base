@@ -7,7 +7,7 @@ ENT.Infection="npc_308_freshdead"
 ENT.InfectionPM=true
 
 ENT.BloodColor=5
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 ENT.Factions={FACTION_ZOMBIES}
 
 ENT.Color=Color(0,0,0)

@@ -11,7 +11,7 @@ end
 else
 SWEP.PrintName = "CROWBAR"
 end
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "melee"
 SWEP.WorldModel = "models/weapons/w_crowbar.mdl"
 SWEP.Slot = 0

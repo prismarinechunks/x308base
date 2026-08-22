@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="Teleport Pad"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.Editable=true
 ENT.Spawnable=true
 ENT.Retimer=0

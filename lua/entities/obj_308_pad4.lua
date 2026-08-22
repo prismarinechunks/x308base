@@ -1,7 +1,7 @@
 AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 ENT.PrintName="Deadly Pad"
-ENT.Category="308..' Base"
+ENT.Category = "Xbase | NPCs"
 ENT.AdminOnly=true
 ENT.Spawnable=true
 

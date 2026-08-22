@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_basemelee"
 SWEP.PrintName = "ZOMBIE_CLAW"
-SWEP.Category = "x308 Base | Melee"
+SWEP.Category = "X Base | Melee"
 SWEP.HoldType = "fist"
 SWEP.ViewModel = "models/weapons/c_arms.mdl"
 SWEP.ShowWorldModel = false

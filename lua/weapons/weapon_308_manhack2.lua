@@ -1,6 +1,6 @@
 SWEP.Base = "weapon_308_manhack"
 SWEP.PrintName=GAME308_LANWEP["manhack"].." II"
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.Author="QQ3088083421\n\n\nDefault Mode:Following"
 SWEP.Spawnable = true
 

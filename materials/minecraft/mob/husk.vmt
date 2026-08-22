@@ -1,0 +1,9 @@
+"vertexlitgeneric" {
+    "$basetexture" "minecraft\mob\husk"
+    "$surfaceprop" "flesh"
+    "$alphatest"   "1"
+    "$halflambert" "1"
+    "$model"       "1"
+    "$nodecal" "1"
+    "$nocull" "1"
+}

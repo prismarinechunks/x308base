@@ -1,7 +1,7 @@
 SWEP.Base = "weapon_308_base" -- Don't touch!if you true to do you better write a base
 --截图视频网址https://www.bilibili.com/video/av28222490/?spm_id_from=333.788.videocard.7
 SWEP.PrintName=GAME308_LANWEP["begg"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.HoldType = "grenade"
 SWEP.CDWInfoBox=true
 SWEP.Author="QQ3088083421\n  --致敬起床战争！\n  --Salute BedWars!"

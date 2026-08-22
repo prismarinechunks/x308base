@@ -4,7 +4,7 @@ AddCSLuaFile()
 SWEP.PrintName = "[DEV]"..GAME308_LANWEP["damcheck"]
 SWEP.Author = "QQ3088083421"
 SWEP.Purpose = "查看伤害的属性.\n用于Dev!"
-SWEP.Category = "x308 Base | Development"
+SWEP.Category = "X Base | Development"
 
 SWEP.Slot = 0
 SWEP.SlotPos = 4

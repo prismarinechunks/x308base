@@ -4,7 +4,7 @@ ENT.Base = "npc_308_solider"
 
 ENT.PrintName = GAME308_LANWEP["solider"] .. "(AK47)"
 
-ENT.Category = "308 NPC"
+ENT.Category = "Xbase | NPCs"
 
 ENT.HP = 80
 

@@ -1,6 +1,6 @@
 SWEP.Base="weapon_308_base"
 SWEP.PrintName=GAME308_LANWEP["omeawa"]
-SWEP.Category = "x308 Base | Misc"
+SWEP.Category = "X Base | Misc"
 SWEP.ViewModel = "" 
 SWEP.WorldModel = ""
 SWEP.Slot = 0
