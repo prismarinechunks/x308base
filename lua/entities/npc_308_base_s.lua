@@ -110,9 +110,15 @@ local A=self:GetAngles()
 A:RotateAroundAxis(A:Right(),0)
 A:RotateAroundAxis(A:Up(),90)
 A:RotateAroundAxis(A:Forward(),90)
-cam.Start3D2D(self:GetPos()+Vector(0,0,self.BBox.z+15*self:GetModelScale()),A,.5)
-draw.SimpleText(self:GetNWInt("_HP"),self.ShowHPText,0,0,Color(0,255,0),1,1)
-cam.End3D2D()
+local __xbase_cam_ok, __xbase_cam_err = xpcall(function()
+    cam.Start3D2D(self:GetPos()+Vector(0,0,self.BBox.z+15*self:GetModelScale()),A,.5)
+    draw.SimpleText(self:GetNWInt("_HP"),self.ShowHPText,0,0,Color(0,255,0),1,1)
+    cam.End3D2D()
+end, debug.traceback)
+if not __xbase_cam_ok then
+    ErrorNoHalt('[XBase Camera Error] ' .. tostring(__xbase_cam_err) .. '\n')
+    pcall(function() cam.End3D2D() end)
+end
 end
 if isnumber(d)and d>.5 then d=1-d end
 local c=self:GetColor()

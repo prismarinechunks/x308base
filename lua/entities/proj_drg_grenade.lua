@@ -4,7 +4,7 @@ ENT.IsDrGGrenade = true
 
 -- Misc --
 ENT.PrintName = "HE Grenade"
-ENT.Category = "Xbase | NPCs"
+ENT.Category = "Xbase | Misc"
 ENT.Models = {"models/weapons/w_eq_fraggrenade.mdl"}
 ENT.Spawnable = true
 ENT.VJ_ID_Grenade = true

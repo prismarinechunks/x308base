@@ -4,7 +4,7 @@ DEFINE_BASECLASS("base_anim")
 
 ENT.PrintName = "Custom Suit Battery"
 
-ENT.Category = "Xbase | NPCs"
+ENT.Category = "Xbase | Misc"
 
 ENT.Editable = true
 

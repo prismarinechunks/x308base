@@ -3,7 +3,7 @@ ENT.Base = "proj_drg_default"
 
 -- Misc --
 ENT.PrintName = "Plasma Ball"
-ENT.Category = "Xbase | NPCs"
+ENT.Category = "Xbase | Misc"
 ENT.AdminOnly = true
 ENT.Spawnable = true
 

@@ -3,7 +3,7 @@ ENT.Base = "proj_drg_grenade"
 
 -- Misc --
 ENT.PrintName = "Smoke Grenade"
-ENT.Category = "Xbase | NPCs"
+ENT.Category = "Xbase | Misc"
 ENT.Models = {"models/weapons/w_eq_smokegrenade.mdl"}
 ENT.Spawnable = true
 

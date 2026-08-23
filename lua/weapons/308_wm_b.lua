@@ -143,9 +143,15 @@ if CLIENT then
 				ang:RotateAroundAxis(ang:Right(), v.angle.p)
 				ang:RotateAroundAxis(ang:Forward(), v.angle.r)
 				
-				cam.Start3D2D(drawpos, ang, v.size)
-					v.draw_func( self )
-				cam.End3D2D()
+				local __xbase_cam_ok, __xbase_cam_err = xpcall(function()
+				    cam.Start3D2D(drawpos, ang, v.size)
+				    v.draw_func( self )
+				    cam.End3D2D()
+				end, debug.traceback)
+				if not __xbase_cam_ok then
+				    ErrorNoHalt('[XBase Camera Error] ' .. tostring(__xbase_cam_err) .. '\n')
+				    pcall(function() cam.End3D2D() end)
+				end
 
 			end
 			

@@ -3,7 +3,7 @@ AddCSLuaFile()
 DEFINE_BASECLASS("base_anim")
 
 ENT.PrintName = "Ammo Supply"
-ENT.Category = "Xbase | NPCs"
+ENT.Category = "Xbase | Misc"
 
 ENT.Editable = true
 ENT.Spawnable = true
