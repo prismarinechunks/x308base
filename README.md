@@ -8,7 +8,7 @@ It keeps both systems together so 308 and DrGBase NPCs can be used in the same e
 
 ## 308 → DrGBase
 
-| 308 / Xbase                 | DrGBase                                                                          |
+| 308 Base                    | DrGBase                                                                          |
 | --------------------------- | -------------------------------------------------------------------------------- |
 | `npc_308_man`               | `drgbase_nextbot`                                                                |
 | `npc_x308_base`             | `drgbase_nextbot`                                                                |
